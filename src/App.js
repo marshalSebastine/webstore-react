@@ -1,7 +1,10 @@
 import './App.css';
 import React from "react";
-import CategoryList from './Components/categoryList/catgoryList';
-
+import Home from './routes/home/home-component.jsx'
+import { Route,Routes } from 'react-router-dom';
+import Navigation from './routes/navigation/navigation-component';
+import Shop from './routes/shop/shop-component';
+import SignIn from './routes/sign-in/sign-in.component';
 
 
 const App = () => {
@@ -35,7 +38,14 @@ const App = () => {
   ];
 
   return (
-          <CategoryList categories={categories} className = 'debug'></CategoryList>
+    <Routes>
+         <Route element={<Navigation/>} path={'/'}>
+
+           <Route index element = {<Home/>}/>
+           <Route element={<Shop/>} path = {'/shop'}/>
+           <Route element={<SignIn/>} path = {'/signin'}/>
+         </Route>
+    </Routes>
   );
 
 
