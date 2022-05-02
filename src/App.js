@@ -7,6 +7,7 @@ import Shop from './routes/shop/shop-component';
 import Authorization from './routes/authorization/authorisarion.component';
 
 
+
 const App = () => {
 
   // const categories = [

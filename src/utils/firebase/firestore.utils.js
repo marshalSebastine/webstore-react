@@ -1,5 +1,5 @@
 import {initializeApp} from 'firebase/app';
-import {signInWithPopup,signInWithRedirect,getAuth,GoogleAuthProvider,createUserWithEmailAndPassword,signInWithEmailAndPassword} from 'firebase/auth';
+import {onAuthStateChanged,signInWithPopup,signInWithRedirect,getAuth,GoogleAuthProvider,createUserWithEmailAndPassword,signInWithEmailAndPassword,signOut} from 'firebase/auth';
 import {getFirestore,doc,getDoc,setDoc} from 'firebase/firestore'
 //  web app's Firebase configuration
 const firebaseConfig = {
@@ -30,6 +30,7 @@ const firebaseConfig = {
   }
   export const storeUserAuthData = async (userauthdata,additionaldata = {}) => {
      
+    console.log("additional data",additionaldata);
     if(!userauthdata){
         return
     };
@@ -63,11 +64,17 @@ const firebaseConfig = {
 
   } 
 
-export const authenticateWithEmailandPassword = async (email,password) => {
+export const createUserWithEmailandPassword = async (email,password) => {
     if (!email || !password){
         return
     }
 
     return await createUserWithEmailAndPassword(auth,email,password);
 } 
+export const signOutUser = async () => {
+    return await signOut(auth);
+}
+export const onAuthChangedListener = (callback) => 
+    onAuthStateChanged(auth,callback);
+    
 export const db = getFirestore();

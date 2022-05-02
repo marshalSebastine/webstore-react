@@ -1,7 +1,7 @@
  import { useState } from "react";
- import FormInput from '../FormInput/FormInput'
+ import FormInput from '../FormInput/FormInput';
  import Button from "../customButton/Button.component";
- import { authenticateWithEmailandPassword,storeUserAuthData } from "../../utils/firebase/firestore.utils";
+ import { createUserWithEmailandPassword,storeUserAuthData } from "../../utils/firebase/firestore.utils";
  const SignUpForm = () => {
 
     const defaultFormState = {
@@ -12,7 +12,7 @@
     }
     const [formstate,setformstate] = useState(defaultFormState);
     const {displayName,email,password,confirmpassword} = formstate;
-
+    // const {setCurrentUser} = useContext(UserContext);
 
     const clearInputFields = () => {
         setformstate({defaultFormState});
@@ -35,13 +35,12 @@
         }else{
 
             try{           
-                 const response = await authenticateWithEmailandPassword(email,password);
+                 const response = await createUserWithEmailandPassword(email,password);
                   if (response){
       
                       console.log('user data response from native email and password provider',response,'and disply:',displayName);
                       await storeUserAuthData(response.user,{displayName});
-                      clearInputFields()
-
+                      
                     }
     }catch(error){
         if (error.code === 'auth/error-already-in-use') {

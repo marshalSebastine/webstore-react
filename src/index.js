@@ -6,7 +6,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'tachyons'
 import { BrowserRouter } from 'react-router-dom';
-
+import { UserProvider } from './contexts/usercontexts';
 const container = document.getElementById('root') 
 
 //create root
@@ -15,7 +15,9 @@ const root = ReactDOM.createRoot(container);
 root.render(
   <React.StrictMode>
   <BrowserRouter>
-    <App/>
+  <UserProvider>
+        <App/>
+  </UserProvider>
   </BrowserRouter>
 </React.StrictMode>
 );
