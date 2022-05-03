@@ -6,19 +6,25 @@ import reportWebVitals from './reportWebVitals';
 import 'tachyons'
 import { BrowserRouter } from 'react-router-dom';
 import { UserProvider } from './contexts/usercontexts';
-const container = document.getElementById('root') 
+import { ProductsProvider } from './contexts/ProductsContext';
+import { CartContextProvider } from './contexts/CartContext';
+const container = document.getElementById('root')
 
 //create root
 
 const root = ReactDOM.createRoot(container);
 root.render(
   <React.StrictMode>
-  <BrowserRouter>
-  <UserProvider>
-        <App/>
-  </UserProvider>
-  </BrowserRouter>
-</React.StrictMode>
+    <BrowserRouter>
+      <UserProvider>
+        <ProductsProvider>
+          <CartContextProvider>
+            <App />
+          </CartContextProvider>
+        </ProductsProvider>
+      </UserProvider>
+    </BrowserRouter>
+  </React.StrictMode>
 );
 
 // ReactDOM.render(

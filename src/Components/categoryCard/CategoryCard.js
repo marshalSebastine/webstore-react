@@ -4,7 +4,7 @@ import './category-card.styles.scss'
 const CategoryCard = ({category}) => {
 
     return (
-        <div className='debug debug-grid category-card' >
+        <div className='category-card' >
 
             <img src={category.imageUrl} alt="cart item" className="card-background-image"></img>
             <div className='category-card-body-container'>
