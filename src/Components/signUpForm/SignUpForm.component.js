@@ -1,6 +1,6 @@
  import { useState } from "react";
  import FormInput from '../FormInput/FormInput';
- import Button from "../customButton/Button.component";
+ import Button,{BUTTON_TYPE_CLASSES} from "../customButton/Button.component";
  import { createUserWithEmailandPassword,storeUserAuthData } from "../../utils/firebase/firestore.utils";
  const SignUpForm = () => {
 
@@ -68,7 +68,7 @@
 
                 <FormInput label='Confirm Password' type='password' name="confirmpassword" value={confirmpassword} onChange={handleOnchange} required/>
 
-                <Button children = 'Submit' type="submit" buttonstyle={'google'} onClick={handleSubmitAction}></Button>
+                <Button children = 'Submit' type="submit" buttonstyle={BUTTON_TYPE_CLASSES.google} onClick={handleSubmitAction}></Button>
 
             </form>
         </div>

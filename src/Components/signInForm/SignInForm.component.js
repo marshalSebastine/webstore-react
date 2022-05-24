@@ -1,6 +1,7 @@
 import { useState} from "react";
 import FormInput from '../FormInput/FormInput'
-import Button from "../customButton/Button.component";
+import Button,{BUTTON_TYPE_CLASSES} from "../customButton/Button.component";
+import { ButtonGroup,AuthsChildred } from "../../routes/authorization/authorisation.component.styles";
 // import { UserContext } from "../../contexts/usercontexts";
 import { signInWithGooglePopUp,signInUserWithEmailandPassword} from "../../utils/firebase/firestore.utils";
 
@@ -43,7 +44,7 @@ const handleSubmitAction = async (event) => {
     };
     
     return(
-        <div className="auths-children">
+        <AuthsChildred>
             <form onSubmit={handleSubmitAction}>
                 <h2>Do Not Have An account?</h2>
                 <span>Sign up with your email and password</span>
@@ -51,12 +52,12 @@ const handleSubmitAction = async (event) => {
                 <FormInput label = 'Email' type='email' name='email' value={email} onChange={handleOnchange} required/>
 
                 <FormInput label='Password' type='password' name="password" value={password} onChange={handleOnchange} required/>
-                <div className="button-group">
-                       <Button children = 'Sign In' type="submit" buttonstyle={'inverted'}></Button>
-                       <Button children = 'Google Sign In' type="button" buttonstyle={'google'} onClick={gpopup}></Button>
-                </div>
+                <ButtonGroup>
+                       <Button children = 'Sign In' type="submit" buttonstyle={BUTTON_TYPE_CLASSES.inverted}></Button>
+                       <Button children = 'Google Sign In' type="button" buttonstyle={BUTTON_TYPE_CLASSES.google} onClick={gpopup}></Button>
+                </ButtonGroup>
             </form>
-        </div>
+        </AuthsChildred>
     )
 }
 export default SignInForm; 

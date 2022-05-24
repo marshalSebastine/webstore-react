@@ -1,6 +1,7 @@
 import {initializeApp} from 'firebase/app';
 import {onAuthStateChanged,signInWithPopup,signInWithRedirect,getAuth,GoogleAuthProvider,createUserWithEmailAndPassword,signInWithEmailAndPassword,signOut} from 'firebase/auth';
-import {getFirestore,doc,getDoc,setDoc} from 'firebase/firestore'
+import {getFirestore,doc,getDoc,getDocs,setDoc, collection,
+    writeBatch,query} from 'firebase/firestore'
 //  web app's Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyCsEDSy1MKkZkvAPqi5X30yoObEVT1XNV8",
@@ -78,3 +79,32 @@ export const onAuthChangedListener = (callback) =>
     onAuthStateChanged(auth,callback);
     
 export const db = getFirestore();
+
+export const addCategoriesAndDocuments = async (collectionKey,objectsToAdd) => {
+
+    const batch = writeBatch(db);
+    const collectionRef = collection(db,collectionKey);
+
+    objectsToAdd.forEach((object) => {
+        const docref = doc(collectionRef,object.title.toLowerCase());
+        batch.set(docref,object);
+    })
+
+    await batch.commit();
+    alert('done');
+
+}
+
+export const getAllProductsInCategories = async (products) => {
+    const collectionRef = collection(db, 'products');
+    const q = query(collectionRef);
+  
+    const querySnapshot = await getDocs(q);
+    const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
+      const { title, items } = docSnapshot.data();
+      acc[title.toLowerCase()] = items;
+      return acc;
+    }, {});
+  
+    return categoryMap;
+};

@@ -1,5 +1,5 @@
 
-import './authorisation.component.styles.scss';
+import {AuthContainer} from './authorisation.component.styles.js';
 import SignInForm from "../../Components/signInForm/SignInForm.component" ;
 import SignUpForm from '../../Components/signUpForm/SignUpForm.component';
 
@@ -10,12 +10,12 @@ const Authorization = () => {
   
 
     return(
-        <div className="auth-container">
+        <AuthContainer>
                 
                 <SignInForm/>
                 <SignUpForm></SignUpForm>
     
-        </div>
+        </AuthContainer>
     
         )
     // useEffect( () => {

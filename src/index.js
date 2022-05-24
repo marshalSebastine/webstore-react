@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import 'tachyons'
 import { BrowserRouter } from 'react-router-dom';
 import { UserProvider } from './contexts/usercontexts';
-import { ProductsProvider } from './contexts/ProductsContext';
+import { CategoriesProvider } from './contexts/CategoriesContext';
 import { CartContextProvider } from './contexts/CartContext';
 const container = document.getElementById('root')
 
@@ -17,11 +17,11 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <UserProvider>
-        <ProductsProvider>
+        <CategoriesProvider>
           <CartContextProvider>
             <App />
           </CartContextProvider>
-        </ProductsProvider>
+        </CategoriesProvider>
       </UserProvider>
     </BrowserRouter>
   </React.StrictMode>

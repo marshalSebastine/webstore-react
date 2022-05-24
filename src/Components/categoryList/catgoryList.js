@@ -1,17 +1,17 @@
 import React from "react";
 import CategoryCard from "../categoryCard/CategoryCard";
-import './categoriesList.styles.scss'
+import {CategoryListBox} from  './categoriesList.styles.js'
 
 const CategoryList = ({categories}) => {
 
     return(
-        <article className="category-list-box">
+        <CategoryListBox>
             {
                 categories.map((category) => (
                     <CategoryCard key={category.id} category={category}></CategoryCard>
                 ))
             }
-        </article>
+        </CategoryListBox>
     )
 }
 

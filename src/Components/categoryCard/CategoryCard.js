@@ -1,18 +1,19 @@
 import React from "react";
-import './category-card.styles.scss'
+import {CategoryCardBody,CardBackground,CategoryCardContainer} from './category-card.styles.js'
+
 
 const CategoryCard = ({category}) => {
 
     return (
-        <div className='category-card' >
+        <CategoryCardContainer >
 
-            <img src={category.imageUrl} alt="cart item" className="card-background-image"></img>
-            <div className='category-card-body-container'>
+            <CardBackground imageUrl = {category.imageUrl}/>
+            <CategoryCardBody to = {`/shop/${category.title}`}>
             <h2>{category.title}</h2>
             <p>Shop Now</p>
-            </div>
+            </CategoryCardBody>
 
-      </div>
+      </CategoryCardContainer>
     );
 
 }
