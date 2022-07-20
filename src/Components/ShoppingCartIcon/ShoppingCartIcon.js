@@ -1,27 +1,28 @@
-import { CartIconContainer, SpanItemCount, ShoppingIcon }from'./cart-icon-styles.js';
-import { CartContext } from '../../contexts/CartContext';
+import { useSelector, useDispatch } from 'react-redux';
+import { CartIconContainer, SpanItemCount, ShoppingIcon } from './cart-icon-styles.js';
+import { selectCartCount, selectIsCartOpen } from '../../store/cart/cart-selector.js';
+import { setCartDrop } from '../../store/cart/cart.actiontypes.js';
 
-import { useContext } from 'react';
+function ShopIcon() {
+  const dispatch = useDispatch();
+  const cartdroppeddown = useSelector(selectIsCartOpen);
+  const cartcount = useSelector(selectCartCount);
 
-const ShopIcon = () => {
-
-    const {cartdroppeddown,setcartdrop,cartcount} = useContext(CartContext);
-
-    const toggleDropDown = () => {
-        if (cartdroppeddown){
-            setcartdrop(false);
-        }else{
-            setcartdrop(true);
-        }
+  const toggleDropDown = () => {
+    if (cartdroppeddown) {
+      dispatch(setCartDrop(false));
+    } else {
+      dispatch(setCartDrop(true));
     }
+  };
 
-    return(
-        <CartIconContainer onClick={toggleDropDown}>
-            <ShoppingIcon/>
-            <SpanItemCount>{cartcount}</SpanItemCount>
-        </CartIconContainer>
+  return (
+    <CartIconContainer onClick={toggleDropDown}>
+      <ShoppingIcon />
+      <SpanItemCount>{cartcount}</SpanItemCount>
+    </CartIconContainer>
 
-    );
+  );
 }
 
 

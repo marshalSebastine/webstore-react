@@ -12,23 +12,3 @@ export const ButtonGroup = styled.div`
 display: flex;
 justify-content: space-around;
 `;
-// .auth-container{
-
-
-
-//     .auths-children{
-
-
-
-//     }
-
-
-//     .button-group{
-
-
-
-//     }
-
-
-
-// }

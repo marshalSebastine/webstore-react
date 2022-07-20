@@ -1,11 +1,7 @@
+import React from 'react';
 import CategoryList from '../../Components/categoryList/catgoryList';
 
-
-
-
-
-const Home = () => {
-
+function Home() {
   const categories = [
     {
       id: 1,
@@ -31,14 +27,12 @@ const Home = () => {
       id: 5,
       title: 'mens',
       imageUrl: 'https://i.ibb.co/R70vBrQ/men.png',
-    }
+    },
   ];
 
   return (
-          <CategoryList categories={categories} className = 'debug'></CategoryList>
+    <CategoryList categories={categories} className="debug" />
   );
-
-
 }
 
 export default Home;

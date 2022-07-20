@@ -1,30 +1,34 @@
+/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
+import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom';
 import './index.css';
+import { BrowserRouter } from 'react-router-dom';
+import { PersistGate } from 'redux-persist/integration/react';
+import { Elements } from '@stripe/react-stripe-js';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import 'tachyons'
-import { BrowserRouter } from 'react-router-dom';
-import { UserProvider } from './contexts/usercontexts';
-import { CategoriesProvider } from './contexts/CategoriesContext';
-import { CartContextProvider } from './contexts/CartContext';
-const container = document.getElementById('root')
+import 'tachyons';
+import { store, persistor } from './store/store';
+import stripePromise from './utils/Stripe/stripe-utils';
 
-//create root
+const container = document.getElementById('root');
+
+// create root
 
 const root = ReactDOM.createRoot(container);
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <UserProvider>
-        <CategoriesProvider>
-          <CartContextProvider>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <BrowserRouter>
+          <Elements stripe={stripePromise}>
             <App />
-          </CartContextProvider>
-        </CategoriesProvider>
-      </UserProvider>
-    </BrowserRouter>
-  </React.StrictMode>
+          </Elements>
+        </BrowserRouter>
+      </PersistGate>
+    </Provider>
+  </React.StrictMode>,
 );
 
 // ReactDOM.render(
