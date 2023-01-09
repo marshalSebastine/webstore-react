@@ -7,7 +7,7 @@ import { Route, Routes } from 'react-router-dom';
 import { checkUserSession } from './store/user/user-action-types';
 import Home from './routes/home/home-component';
 import Navigation from './routes/navigation/navigation-component';
-import Shop from './routes/Shop/shop-component';
+import Shop from './routes/shop/shop-component';
 import Authorization from './routes/authorization/authorisarion.component';
 import CartComponent from './routes/cart/cart-component';
 

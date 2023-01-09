@@ -41,8 +41,7 @@ p {
 
 export const CategoryCardContainer = styled.div`
 
-min-width: 30%;
-    height: 240px;
+    min-width: 30%;
     flex: 1 1 auto;
     display: flex;
     align-items: center;
