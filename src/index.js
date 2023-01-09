@@ -12,27 +12,13 @@ import 'tachyons';
 import { store, persistor } from './store/store';
 import stripePromise from './utils/Stripe/stripe-utils';
 
-// const container = document.getElementById('root');
+const container = document.getElementById('root');
 
 // create root
 
-// const root = ReactDOM.createRoot(container);
-// root.render(
-//   <React.StrictMode>
-//     <Provider store={store}>
-//       <PersistGate loading={null} persistor={persistor}>
-//         <BrowserRouter>
-//           <Elements stripe={stripePromise}>
-//             <App />
-//           </Elements>
-//         </BrowserRouter>
-//       </PersistGate>
-//     </Provider>
-//   </React.StrictMode>,
-// );
-
-ReactDOM.render(
-<React.StrictMode>
+const root = ReactDOM.createRoot(container);
+root.render(
+  <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
@@ -42,9 +28,17 @@ ReactDOM.render(
         </BrowserRouter>
       </PersistGate>
     </Provider>
-</React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 );
+
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <BrowserRouter>
+//       <App/>
+//     </BrowserRouter>s
+//   </React.StrictMode>,
+//   document.getElementById('root')
+// );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
